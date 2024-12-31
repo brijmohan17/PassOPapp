@@ -1,3 +1,7 @@
+if(process.env.NODE_ENV!=='production'){
+  require('dotenv').config();
+}
+
 const express = require('express')
 const { MongoClient } = require('mongodb')
 const bodyParser = require('body-parser');
@@ -5,8 +9,8 @@ const dotenv = require('dotenv')
 dotenv.config()
 const cors = require('cors')
 // Connection URL
-const url = 'mongodb://localhost:27017';
-const client = new MongoClient(url);
+
+const client = new MongoClient(process.env.MONGO_URI);
 
 // Database Name
 const dbName = 'passop';
